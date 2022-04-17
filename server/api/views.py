@@ -16,6 +16,7 @@ from rest_framework.response import Response
 
 # Create your views here.
 class FoundationViewSet(ModelViewSet):
+    permission_classes = [permissions.AllowAny]
     queryset = models.Foundation.objects.all()
     serializer_class = FoundationSerializer
 
