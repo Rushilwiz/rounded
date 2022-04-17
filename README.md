@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/rushilwiz/rounded">
-    <img src=".github/logo.png" alt="Logo" width="480px" height="320px">
+    <img src=".github/logo.png" alt="Logo" width="480px" height="120px">
   </a>
 
   <h1 align="center">rounded.</h1>
