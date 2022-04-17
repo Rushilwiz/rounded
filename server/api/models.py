@@ -16,7 +16,7 @@ class Wallet (models.Model):
 class Consumer (models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     wallet = models.OneToOneField(Wallet, null=True, blank=True, on_delete=models.CASCADE)
-    access_token = models.CharField(max_length=100)
+    phone = models.CharField(max_length=32, null=True, blank=True),
 
     def __str__(self):
         return f'{self.user.username}\'s profile'
@@ -27,8 +27,9 @@ class Consumer (models.Model):
 class Foundation (models.Model):
     wallet = models.OneToOneField(Wallet, on_delete=models.CASCADE)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=100)
-    description = models.TextField()
+    name = models.CharField(max_length=100, null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
+    hex = models.CharField(max_length=200, null=True, blank=True)
 
     def __str__(self):
         return f'{self.user.username}\'s foundation'
