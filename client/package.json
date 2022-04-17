@@ -12,8 +12,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@auth0/nextjs-auth0": "^1.7.0",
     "@reduxjs/toolkit": "^1.8.1",
+    "axios": "^0.26.1",
+    "firebase": "^9.6.11",
     "next": "^12.1.5",
+    "oauth": "^0.9.15",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-redux": "^7.2.8",
