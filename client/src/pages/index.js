@@ -1,11 +1,13 @@
-import { useAuth } from "../common/lib/firebase/authContext";
+// import { useAuth } from "../common/lib/firebase/authContext";
 export default function HomePage() {
-  const { currentUser } = useAuth();
+  // const { currentUser } = useAuth();
   return (
     <div>
       <h1>This is HackTJ 2022!</h1>
-      {currentUser ? (
-        <p>You're logged in! Current email: {currentUser.email}</p>
+      {localStorage.getItem("username") ? (
+        <p>
+          You're logged in! Current username: {localStorage.getItem("username")}
+        </p>
       ) : (
         <p>Not logged in</p>
       )}

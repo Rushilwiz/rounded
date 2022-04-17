@@ -7,7 +7,29 @@ export default function AuthComponent() {
   const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [registerUsername, setRegisterUsername] = useState("");
+  const [registerPassword, setRegisterPassword] = useState("");
 
+  async function handleRegisterSubmit(e) {
+    try {
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          username: registerUsername,
+          password: registerPassword,
+        }),
+      };
+      const response = await fetch(
+        "http://localhost:8000/api/profile/create",
+        requestOptions
+      );
+      const dataa = await response.json();
+      console.log(dataa);
+    } catch (error) {
+      console.log(error);
+    }
+  }
   async function handleSubmit(e) {
     try {
       console.log(username);
@@ -29,6 +51,18 @@ export default function AuthComponent() {
       console.log(data);
 
       localStorage.setItem("token", data.access);
+      localStorage.setItem("username", username);
+
+      // const reqOps = {
+      //   method: "GET",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //     Authorization: `Bearer ${data.access}`,
+      //   },
+      // };
+      // const resp = await fetch("http://localhost:8000/api/foundation/", reqOps);
+      // const data2 = await resp.json();
+      // console.log(data2);
 
       router.push("/");
     } catch (error) {
@@ -38,9 +72,9 @@ export default function AuthComponent() {
 
   return (
     <>
-      <h1>Register</h1>
+      <h1>Login</h1>
       <input
-        placeholder="Email"
+        placeholder="Username"
         onChange={(e) => setUsername(e.target.value)}
       />
       <input
@@ -49,6 +83,21 @@ export default function AuthComponent() {
         onChange={(e) => setPassword(e.target.value)}
       />
       <button onClick={handleSubmit}>Submit</button>
+
+      <br />
+      <h1>OR</h1>
+      <br />
+      <h1>Register</h1>
+      <input
+        placeholder="Username"
+        onChange={(e) => setRegisterUsername(e.target.value)}
+      />
+      <input
+        placeholder="Password"
+        type="password"
+        onChange={(e) => setRegisterPassword(e.target.value)}
+      />
+      <button onClick={handleRegisterSubmit}>Submit</button>
     </>
   );
 }
