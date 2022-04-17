@@ -21,7 +21,10 @@ export default function AuthComponent() {
         }),
       };
 
-      const response = await fetch("localhost:8000/api/token/", requestOptions);
+      const response = await fetch(
+        "http://localhost:8000/api/token/",
+        requestOptions
+      );
       const data = await response.json();
       console.log(data);
 
